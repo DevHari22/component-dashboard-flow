@@ -23,6 +23,15 @@ const ResumeScoreChart: React.FC = () => {
     return null;
   };
 
+  const CustomLabel = () => {
+    return (
+      <text x="50%" y="50%" textAnchor="middle" dominantBaseline="middle" className="fill-gray-900">
+        <tspan x="50%" dy="-0.5em" className="text-2xl font-bold">100</tspan>
+        <tspan x="50%" dy="1.2em" className="text-sm fill-gray-600">Total No. of candidates</tspan>
+      </text>
+    );
+  };
+
   return (
     <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-200 hover:shadow-md transition-shadow duration-300">
       <h3 className="text-lg font-semibold text-gray-900 mb-4">Resume Score Distribution</h3>
@@ -42,6 +51,7 @@ const ResumeScoreChart: React.FC = () => {
                 <Cell key={`cell-${index}`} fill={entry.color} />
               ))}
             </Pie>
+            <CustomLabel />
             <Tooltip content={<CustomTooltip />} />
             <Legend 
               verticalAlign="bottom" 
@@ -52,10 +62,6 @@ const ResumeScoreChart: React.FC = () => {
             />
           </PieChart>
         </ResponsiveContainer>
-      </div>
-      <div className="text-center mt-4">
-        <div className="text-2xl font-bold text-gray-900">100</div>
-        <div className="text-sm text-gray-600">Total No. of candidates</div>
       </div>
     </div>
   );
